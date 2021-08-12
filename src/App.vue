@@ -1,18 +1,19 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <Contador titulo="Entraron"/>
-
-  <Contador/>
+  <!-- <img alt="Vue logo" src="./assets/logo.png"> --> 
+  <!-- <Contador :start="1"/> -->
+  <indecision/>
 </template>
 
 <script>
 
-import Contador from './components/Contador.vue'
+//import Contador from './components/Contador.vue'
+import Indecision from './components/Indecision.vue'
 
 export default {
   name: 'App',
   components: {
-    Contador
+    //Contador
+    Indecision
   }
 }
 </script>

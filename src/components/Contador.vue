@@ -11,10 +11,21 @@
 <script>
 export default {
     //name: 'MiComponenteContador'
-    props: ['titulo'],
+    //props: ['titulo','start'],
+    props: {
+      titulo: String,
+      start: {
+        type: Number,
+        default: 100,
+        validator(value) {
+          return value >= 0
+        }
+        //required: true
+      }
+    },
     data() {
       return {
-        counter: 0
+        counter: this.start
       }
     },
     methods: {
