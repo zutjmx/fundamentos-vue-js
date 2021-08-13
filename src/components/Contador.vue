@@ -1,7 +1,8 @@
 <template>
   <!-- <h2>{{titulo || 'Contador'}}</h2> -->
   <h2>{{customTitle}}</h2> 
-  <p>{{counter}} <sup>2</sup> = {{computarCuadrado}} </p>
+  <p data-testid="contador">{{counter}}</p>
+  <p>{{counter}} <sup>2</sup> = {{computarCuadrado}} </p>  
   <div>
     <button @click="incremento">+1</button>
     <button @click="decremento">-1</button>

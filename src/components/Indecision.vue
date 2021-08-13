@@ -25,33 +25,46 @@ export default {
     },
     methods: {
         async getRespuesta() {
-            
-            this.answer = 'Pensando la respuesta ....'
-            const {answer, image} = await fetch('https://yesno.wtf/api').then(resultado => resultado.json())
 
-            switch (answer) {
-                case 'yes':
-                    this.answer = 'Sí!!!'
-                    break;
-                case 'no':
-                    this.answer = 'No!!!'
-                    break;
-                case 'maybe':
-                    this.answer = 'Posiblemente...'
-                    break;
-                default:
-                    break;
+            try {
+                
+                this.answer = 'Pensando la respuesta ....'
+                const {answer, image} = await fetch('https://yesno.wtf/api').then(resultado => resultado.json())
+
+                switch (answer) {
+                    case 'yes':
+                        this.answer = 'Sí!!!'
+                        break;
+                    case 'no':
+                        this.answer = 'No!!!'
+                        break;
+                    case 'maybe':
+                        this.answer = 'Posiblemente...'
+                        break;
+                    default:
+                        break;
+                }
+
+                this.img = image
+
+            } catch (error) {
+                console.log('IndecisionComponent:', error);
+                this.answer = 'No se pudo cargar el API'
+                this.img = null
             }
-
-            this.img = image
 
         }
     },
     watch: {
         question(value, oldValue) {
             this.esUnaPreguntaValida = false
+            
+            console.log(value);
+            
             if (!value.includes('?')) return
+            
             this.esUnaPreguntaValida = true
+            
             this.getRespuesta()
         }
     }
